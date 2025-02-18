@@ -2,11 +2,6 @@ import streamlit as st
 import logging
 
 
-class ContextFilter(logging.Filter):
-    def filter(self, record):
-        record.user_ip = get_remote_ip()
-        return super().filter(record)
-
 
 def get_remote_ip() -> str:
     """Get remote ip."""
@@ -20,6 +15,13 @@ def get_remote_ip() -> str:
     except Exception as e:
         return None
     return session_info.request.remote_ip
+
+
+class ContextFilter(logging.Filter):
+    def filter(self, record):
+        record.user_ip = get_remote_ip()
+        return super().filter(record)
+
 
 
 def click_btn01():
