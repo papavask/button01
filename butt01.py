@@ -46,7 +46,7 @@ def start_main():
     if st.session_state.button01_clicked:
         if st.button("Button02", on_click=click_btn02):
           pass
-      else:
+        else:
           st.button("Button02", disabled=True)
 
 def init_logging():
