@@ -4,6 +4,7 @@ import logging
 
 
 def get_remote_ip() -> str:
+    """Get remote ip."""
     try:
         ctx = get_script_run_ctx()
         if ctx is None:
