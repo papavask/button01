@@ -33,11 +33,10 @@ def click_btn02():
   pass
     
 def start_main():
-    im = Image.open("./Source/favicon.ico")
+    #im = Image.open("./Source/favicon.ico")
 # Configure the main page
     st.set_page_config(
         page_title="Test Buttons",
-        page_icon=im,
         layout="wide",
         initial_sidebar_state="expanded",
         menu_items={
