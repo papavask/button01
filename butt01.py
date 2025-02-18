@@ -2,6 +2,11 @@ import streamlit as st
 import logging
 
 
+class ContextFilter(logging.Filter):
+    def filter(self, record):
+        record.user_ip = get_remote_ip()
+        return super().filter(record)
+
 def click_btn01():
   pass
 
