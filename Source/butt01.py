@@ -29,7 +29,8 @@ def click_btn01(Radio_url):
     st.session_state.Button01_clicked = True
     st.session_state.Btn01_Dis = True
     st.session_state.Btn02_Dis = False
-    asyncio.run(play(Radio_url))
+    #asyncio.run(play(Radio_url))
+    st.audio(Station_url, format="audio/mp3", autoplay=True)
 
 async def play(Station_url):
     st.audio(Station_url, format="audio/mp3", autoplay=True)
@@ -38,6 +39,7 @@ async def play(Station_url):
 def click_btn02():
     st.session_state.Button02_clicked = True
     st.session_state.Btn02_Dis = True
+    st.audio(Station_url, format="audio/mp3", autoplay=True)
     
 def start_main():
     #im = Image.open("./Source/favicon.ico")
