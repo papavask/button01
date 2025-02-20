@@ -29,10 +29,17 @@ def click_btn01(Radio_url):
     st.session_state.Button01_clicked = True
     st.session_state.Btn01_Dis = True
     st.session_state.Btn02_Dis = False
-    #asyncio.run(play(Radio_url))
-    st.audio(Radio_url, format="audio/mp3", autoplay=True)
+    st.session_state.stop_processes1 = False
+    thread1 = threading.Thread(target=process_1)
+    thread1.start()
+    st.session_state.thread1 = thread1
+    
 
-async def play(Station_url):
+def process_1():
+    if not stop_processes:
+        st.audio(Radio_url, format="audio/mp3", autoplay=True)
+        
+async def Sazam_it(Station_url):
     st.audio(Station_url, format="audio/mp3", autoplay=True)
 
 
@@ -40,7 +47,8 @@ def click_btn02(Station_url):
     st.session_state.Button02_clicked = True
     st.session_state.Btn01_Dis = True
     st.session_state.Btn02_Dis = False
-    st.audio(Station_url, format="audio/mp3", autoplay=True)
+    st.session_state.thread1.join()
+    #st.audio(Station_url, format="audio/mp3", autoplay=True)
     
 def start_main():
     #im = Image.open("./Source/favicon.ico")
@@ -85,6 +93,9 @@ def start_main():
 
     if 'Selected_station' not in st.session_state:
         st.session_state.Selected_station = ""
+
+    if 'stop_processes1' not in st.session_state:
+    st.session_state.stop_processes1 = False
 
     file_path = "./Source/RadioList.csv"
     data = pd.read_csv(file_path, sep=",")
