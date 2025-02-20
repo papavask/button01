@@ -118,5 +118,5 @@ if __name__ == "__main__":
     init_logging()
     logger = logging.getLogger("logger")
     logger.info("Inside main")
-    await start_main()
+    asyncio.run(start_main())
 
