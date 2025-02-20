@@ -53,7 +53,8 @@ def start_main():
 # Set text
     st.write("Welcome !!!")
 
-
+    logger.info("In Main")
+    
     if 'Button01' not in st.session_state:
        st.session_state.button01_clicked = False
        logger.info("bp001")
@@ -63,7 +64,7 @@ def start_main():
       logger.info("bp002")
 
     if st.button("Button01", on_click=click_btn01):
-      st.session_state.listen_clicked = True
+      st.session_state.button01_clicked = True
 
     if st.session_state.button01_clicked:
         if st.button("Button02", on_click=click_btn02):
