@@ -25,13 +25,13 @@ class ContextFilter(logging.Filter):
 
 
 def click_btn01():
-    st.session_state.button01_clicked = True
+    st.session_state.Button01_clicked = True
     st.session_state.Btn_Ena = True
 
 
 
 def click_btn02():
-    st.session_state.button02_clicked = True
+    st.session_state.Button02_clicked = True
     st.session_state.Btn_Ena = False
     
 def start_main():
@@ -64,11 +64,11 @@ def start_main():
         logger.info("bp001")
         
     if 'Button01_clicked' not in st.session_state:
-       st.session_state.button01_clicked = False
+       st.session_state.Button01_clicked = False
        logger.info("bp002")
 
     if 'Button02_clicked' not in st.session_state:
-      st.session_state.button02_clicked = False
+      st.session_state.Button02_clicked = False
       logger.info("bp003")
 
     cols[0].button("Button01", on_click=click_btn01, disabled=st.session_state.Btn_Ena)
