@@ -25,12 +25,14 @@ class ContextFilter(logging.Filter):
 
 
 def click_btn01():
-  pass
+    st.session_state.button01_clicked = True
+    st.session_state.Btn_Ena = False
+
 
 
 def click_btn02():
-  # st.session_state.btn02_clicked = True
-  pass
+    st.session_state.button02_clicked = True
+    st.session_state.Btn_Ena = True
     
 def start_main():
     #im = Image.open("./Source/favicon.ico")
@@ -54,23 +56,21 @@ def start_main():
     st.write("Welcome !!!")
 
     logger.info("In Main")
-    
-    if 'Button01' not in st.session_state:
+
+    if 'Btn_Ena' not in st.session_state:
+        st.session_state.Btn_Ena = True
+        logger.info("bp001")
+        
+    if 'Button01_clicked' not in st.session_state:
        st.session_state.button01_clicked = False
-       logger.info("bp001")
+       logger.info("bp002")
 
-    if 'Button02' not in st.session_state:
+    if 'Button02_clicked' not in st.session_state:
       st.session_state.button02_clicked = False
-      logger.info("bp002")
+      logger.info("bp003")
 
-    if st.button("Button01", on_click=click_btn01):
-      st.session_state.button01_clicked = True
-
-    if st.session_state.button01_clicked:
-        if st.button("Button02", key='bt02', on_click=click_btn02):
-          pass
-        else:
-          st.button("Button02", key='bt02', disabled=True)
+    cols[0].button("Button01", on_click=click_btn01, disabled=st.session_state.Btn_Ena)
+    cols[1].button("Button02", on_click=click_btn02, disabled=not st.session_state.Btn_Ena)
 
 def init_logging():
     # Make sure to instanciate the logger only once
