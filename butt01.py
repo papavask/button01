@@ -57,6 +57,8 @@ def start_main():
 
     logger.info("In Main")
 
+    cols = st.columns((2,2,10))
+
     if 'Btn_Ena' not in st.session_state:
         st.session_state.Btn_Ena = True
         logger.info("bp001")
