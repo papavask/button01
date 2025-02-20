@@ -29,7 +29,7 @@ def click_btn01(Radio_url):
     st.session_state.Button01_clicked = True
     st.session_state.Btn01_Dis = True
     st.session_state.Btn02_Dis = False
-    asyncio.run(play(URL_Station))
+    asyncio.run(play(Radio_url))
 
 async def play(Station_url):
     st.audio(Station_url, format="audio/mp3", autoplay=True)
