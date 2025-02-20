@@ -39,7 +39,7 @@ def click_btn02():
     st.session_state.Button02_clicked = True
     st.session_state.Btn02_Dis = True
     
-def start_main():
+async def start_main():
     #im = Image.open("./Source/favicon.ico")
 # Configure the main page
     st.set_page_config(
