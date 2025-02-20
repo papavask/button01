@@ -67,10 +67,10 @@ def start_main():
       st.session_state.button01_clicked = True
 
     if st.session_state.button01_clicked:
-        if st.button("Button02", on_click=click_btn02):
+        if st.button("Button02", key='bt02', on_click=click_btn02):
           pass
         else:
-          st.button("Button02", disabled=True)
+          st.button("Button02", key='bt02', disabled=True)
 
 def init_logging():
     # Make sure to instanciate the logger only once
