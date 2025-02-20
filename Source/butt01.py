@@ -25,7 +25,7 @@ class ContextFilter(logging.Filter):
         return super().filter(record)
 
 
-def click_btn01(Radio_url):
+async def click_btn01(Radio_url):
     st.session_state.Button01_clicked = True
     st.session_state.Btn01_Dis = True
     st.session_state.Btn02_Dis = False
