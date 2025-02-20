@@ -25,7 +25,7 @@ class ContextFilter(logging.Filter):
         return super().filter(record)
 
 
-async def click_btn01(Radio_url):
+def click_btn01(Radio_url):
     st.session_state.Button01_clicked = True
     st.session_state.Btn01_Dis = True
     st.session_state.Btn02_Dis = False
@@ -91,7 +91,7 @@ async def start_main():
     Radio_url = data[data["Station"] == selected_station].values.tolist()[0][2][2:-1]
     st.session_state.Btn01_Dis = False
     st.write(st.session_state.Btn02_Dis)
-    cols[0].button("Button01", on_click=await click_btn01, args=[Radio_url], disabled=st.session_state.Btn01_Dis)
+    cols[0].button("Button01", on_click=click_btn01, args=[Radio_url], disabled=st.session_state.Btn01_Dis)
     cols[1].button("Button02", on_click=click_btn02, disabled=st.session_state.Btn02_Dis)
 
 def init_logging():
