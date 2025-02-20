@@ -95,7 +95,7 @@ def start_main():
         st.session_state.Selected_station = ""
 
     if 'stop_processes1' not in st.session_state:
-    st.session_state.stop_processes1 = False
+        st.session_state.stop_processes1 = False
 
     file_path = "./Source/RadioList.csv"
     data = pd.read_csv(file_path, sep=",")
