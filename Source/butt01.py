@@ -33,7 +33,7 @@ def click_btn01(Radio_url):
 
 def click_btn02():
     st.session_state.Button02_clicked = True
-    st.session_state.Btn_Ena = False
+    st.session_state.Btn02_Dis = True
     
 def start_main():
     #im = Image.open("./Source/favicon.ico")
@@ -85,7 +85,7 @@ def start_main():
                        station_list
                        )
     Radio_url = data[data["Station"] == selected_station].values.tolist()[0][2][2:-1]
-
+    st.session_state.Btn01_Dis = False
     cols[0].button("Button01", on_click=click_btn01, args=[Radio_url], disabled=st.session_state.Btn01_Dis)
     cols[1].button("Button02", on_click=click_btn02, disabled=st.session_state.Btn02_Dis)
 
