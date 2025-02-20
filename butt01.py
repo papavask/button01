@@ -26,13 +26,13 @@ class ContextFilter(logging.Filter):
 
 def click_btn01():
     st.session_state.button01_clicked = True
-    st.session_state.Btn_Ena = False
+    st.session_state.Btn_Ena = True
 
 
 
 def click_btn02():
     st.session_state.button02_clicked = True
-    st.session_state.Btn_Ena = True
+    st.session_state.Btn_Ena = False
     
 def start_main():
     #im = Image.open("./Source/favicon.ico")
@@ -60,7 +60,7 @@ def start_main():
     cols = st.columns((2,2,10))
 
     if 'Btn_Ena' not in st.session_state:
-        st.session_state.Btn_Ena = True
+        st.session_state.Btn_Ena = False
         logger.info("bp001")
         
     if 'Button01_clicked' not in st.session_state:
