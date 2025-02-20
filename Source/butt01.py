@@ -26,7 +26,8 @@ class ContextFilter(logging.Filter):
 
 def click_btn01():
     st.session_state.Button01_clicked = True
-    st.session_state.Btn_Ena = True
+    st.session_state.Btn01_Dis = True
+    st.session_state.Btn02_Dis = False
 
 
 
@@ -59,9 +60,13 @@ def start_main():
 
     cols = st.columns((2,2,10))
 
-    if 'Btn_Ena' not in st.session_state:
-        st.session_state.Btn_Ena = False
+    if 'Btn01_Dis' not in st.session_state:
+        st.session_state.Btn01_Dis = False
         logger.info("bp001")
+
+    if 'Btn02_Dis' not in st.session_state:
+        st.session_state.Btn02_Dis = True
+        logger.info("bp001a")
         
     if 'Button01_clicked' not in st.session_state:
        st.session_state.Button01_clicked = False
@@ -71,8 +76,18 @@ def start_main():
       st.session_state.Button02_clicked = False
       logger.info("bp003")
 
-    cols[0].button("Button01", on_click=click_btn01, disabled=st.session_state.Btn_Ena)
-    cols[1].button("Button02", on_click=click_btn02, disabled=not st.session_state.Btn_Ena)
+    file_path = "./Source/RadioList.csv"
+    data = pd.read_csv(file_path, sep=",")
+    station_list = list(data["Station"])
+# Select station
+    selected_station = st.sidebar.selectbox(
+                       "Select a station from the list",
+                       station_list
+                       )
+    Radio_url = data[data["Station"] == selected_station].values.tolist()[0][2][2:-1]
+
+    cols[0].button("Button01", on_click=click_btn01, args=[Radio_url], disabled=st.session_state.Btn01_Dis)
+    cols[1].button("Button02", on_click=click_btn02, disabled=st.session_state.Btn02_Dis)
 
 def init_logging():
     # Make sure to instanciate the logger only once
