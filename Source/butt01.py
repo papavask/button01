@@ -118,5 +118,5 @@ if __name__ == "__main__":
     init_logging()
     logger = logging.getLogger("logger")
     logger.info("Inside main")
-    start_main()
+    await start_main()
 
