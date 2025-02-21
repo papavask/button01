@@ -51,9 +51,16 @@ def click_btn02(Station_url):
     st.session_state.Button02_clicked = True
     st.session_state.Btn01_Dis = True
     st.session_state.Btn02_Dis = False
-    st.session_state.thread1.join()
+    #st.session_state.thread1.join()
     #st.audio(Station_url, format="audio/mp3", autoplay=True)
-    
+
+def click_btn03():
+    st.session_state.Button01_clicked = False
+    st.session_state.Button02_clicked = False
+    st.session_state.Btn01_Dis = False
+    st.session_state.Btn02_Dis = True
+    st.session_state.thread1.join()
+
 def start_main():
     #im = Image.open("./Source/favicon.ico")
 # Configure the main page
@@ -77,7 +84,7 @@ def start_main():
 
     logger.info("In Main")
 
-    cols = st.columns((2,2,10))
+    cols = st.columns(3)
 
     if 'Btn01_Dis' not in st.session_state:
         st.session_state.Btn01_Dis = False
@@ -117,9 +124,10 @@ def start_main():
         st.session_state.Btn02_Dis = True
         st.session_state.Selected_station = selected_station
         
-    st.write(st.session_state.Btn02_Dis)
+    #st.write(st.session_state.Btn02_Dis)
     cols[0].button("Button01", on_click=click_btn01, args=[Radio_url], disabled=st.session_state.Btn01_Dis)
     cols[1].button("Button02", on_click=click_btn02, args=[Radio_url], disabled=st.session_state.Btn02_Dis)
+    cols[2].button("Button03", on_click=click_btn03)
 
 def init_logging():
     # Make sure to instanciate the logger only once
