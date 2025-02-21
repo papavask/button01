@@ -37,8 +37,7 @@ def click_btn01(Radio_url):
     
 
 def process_1():
-    if not st.session_state.stop_processes1:
-        st.audio(Radio_url, format="audio/mp3", autoplay=True)
+    st.audio(Radio_url, format="audio/mp3", autoplay=True)
         
 async def Sazam_it(Station_url):
     st.audio(Station_url, format="audio/mp3", autoplay=True)
