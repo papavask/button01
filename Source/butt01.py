@@ -31,8 +31,8 @@ def click_btn01(Radio_url):
     st.session_state.Btn01_Dis = True
     st.session_state.Btn02_Dis = False
     st.session_state.stop_processes1 = False
-    thread1 = threading.Thread(target=process_1)
-    thread1.start(Radio_url)
+    thread1 = threading.Thread(target=process_1, args=(Radio_url,))
+    thread1.start()
     st.session_state.thread1 = thread1
     
 
