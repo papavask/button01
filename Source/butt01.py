@@ -34,7 +34,7 @@ def click_btn01(Radio_url):
     thread1 = threading.Thread(target=process_1, args=(Radio_url,))
     #add_script_run_ctx(thread1)
     ctx = get_script_run_ctx()
-    add_script_run_ctx(thread, ctx)
+    add_script_run_ctx(thread1, ctx)
     thread1.start()
     st.session_state.thread1 = thread1
     
