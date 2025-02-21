@@ -32,11 +32,11 @@ def click_btn01(Radio_url):
     st.session_state.Btn02_Dis = False
     st.session_state.stop_processes1 = False
     thread1 = threading.Thread(target=process_1)
-    thread1.start()
+    thread1.start(Radio_url)
     st.session_state.thread1 = thread1
     
 
-def process_1():
+def process_1(Radio_url):
     st.audio(Radio_url, format="audio/mp3", autoplay=True)
         
 async def Sazam_it(Station_url):
