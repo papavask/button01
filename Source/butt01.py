@@ -37,6 +37,7 @@ def click_btn01(Radio_url):
     
 
 def process_1(Radio_url):
+    st.write("In proc1")
     st.audio(Radio_url, format="audio/mp3", autoplay=True)
         
 async def Sazam_it(Station_url):
