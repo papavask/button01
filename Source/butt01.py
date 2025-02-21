@@ -7,11 +7,13 @@ import threading
 try:
     # Streamlit >= 1.12.0
     from streamlit.runtime.scriptrunner import add_script_run_ctx
-    from streamlit.runtime.scriptrunner.script_run_context import get_script_run_ctx
+    from streamlit.runtime.scriptrunner.script_run_context 
+         import get_script_run_ctx
 except:
     # Streamlit <= 1.11.0
     from streamlit.scriptrunner import add_script_run_ctx
-    from streamlit.scriptrunner.script_run_context import get_script_run_ctx
+    from streamlit.scriptrunner.script_run_context 
+         import get_script_run_ctx
 
 
 
