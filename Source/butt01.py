@@ -4,8 +4,7 @@ import pandas as pd
 #import asyncio
 import threading
 
-from streamlit.runtime.scriptrunner import add_script_run_ctx
-from streamlit.runtime.scriptrunner.script_run_context import get_script_run_ctx
+from streamlit.ReportThread import add_report_ctx
 
 
 
@@ -36,8 +35,7 @@ def click_btn01(Radio_url):
     st.session_state.Btn02_Dis = False
     st.session_state.stop_processes1 = False
     thread1 = threading.Thread(target=process_1, args=(Radio_url,))
-    ctx = get_script_run_ctx()
-    add_script_run_ctx(t)
+    add_script_run_ctx(thread1)
     thread1.start()
     st.session_state.thread1 = thread1
     
