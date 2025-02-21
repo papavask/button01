@@ -4,6 +4,15 @@ import pandas as pd
 #import asyncio
 import threading
 
+try:
+    # Streamlit >= 1.12.0
+    from streamlit.runtime.scriptrunner import add_script_run_ctx
+    from streamlit.runtime.scriptrunner.script_run_context import get_script_run_ctx
+except:
+    # Streamlit <= 1.11.0
+    from streamlit.scriptrunner import add_script_run_ctx
+    from streamlit.scriptrunner.script_run_context import get_script_run_ctx
+
 
 
 def get_remote_ip() -> str:
@@ -32,6 +41,8 @@ def click_btn01(Radio_url):
     st.session_state.Btn02_Dis = False
     st.session_state.stop_processes1 = False
     thread1 = threading.Thread(target=process_1, args=(Radio_url,))
+    ctx = get_script_run_ctx()
+    add_script_run_ctx(t)
     thread1.start()
     st.session_state.thread1 = thread1
     
